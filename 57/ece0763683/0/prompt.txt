@@ -1,0 +1,5 @@
+So, I want you to change the story in story.txt where it must include moral at the ending, The story should be among A Mother and a son. So update the story.txt.
+
+---
+
+git status
