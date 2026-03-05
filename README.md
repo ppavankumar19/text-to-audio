@@ -47,12 +47,12 @@ Since modern Linux distributions protect the system Python environment, use a vi
 
 Listen to the generated audio directly here:
 
-<audio controls src="audio.mp3">
-  Your browser does not support the audio element.
-</audio>
+https://github.com/ppavankumar19/text-to-audio/raw/main/audio.mp3
+
+> **Note:** If the player above doesn't appear, you can also [click here to play/download the file](https://github.com/ppavankumar19/text-to-audio/raw/main/audio.mp3).
 
 ## Features
 
 - Supports Indian English (`en-IN`), Telugu (`te-IN`), and other Indian languages.
 - **Smart Chunking:** Automatically splits long text files to stay within API limits.
-- **GitHub Playback:** The generated `audio.mp3` can be played directly within the GitHub web interface or via the player above.
+- **GitHub Playback:** The generated `audio.mp3` can be played directly within the GitHub web interface.
