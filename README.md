@@ -33,12 +33,6 @@ Since modern Linux distributions protect the system Python environment, use a vi
    pip install -r requirements.txt
    ```
 
-4. **Add your API Key:**
-   ```bash
-   cp .env.example .env
-   ```
-   Edit `.env` and replace `YOUR_API_KEY_HERE` with your actual key.
-
 ## Usage
 
 1. Place your text in `story.txt`.
@@ -49,8 +43,16 @@ Since modern Linux distributions protect the system Python environment, use a vi
    ```
 4. The output will be saved as `audio.mp3`.
 
+## Audio Preview
+
+Listen to the generated audio directly here:
+
+<audio controls src="audio.mp3">
+  Your browser does not support the audio element.
+</audio>
+
 ## Features
 
 - Supports Indian English (`en-IN`), Telugu (`te-IN`), and other Indian languages.
 - **Smart Chunking:** Automatically splits long text files to stay within API limits.
-- **GitHub Playback:** The generated `audio.mp3` can be played directly within the GitHub web interface.
+- **GitHub Playback:** The generated `audio.mp3` can be played directly within the GitHub web interface or via the player above.
