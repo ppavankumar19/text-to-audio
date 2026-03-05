@@ -47,9 +47,14 @@ Since modern Linux distributions protect the system Python environment, use a vi
 
 Listen to the generated audio directly here:
 
-https://github.com/ppavankumar19/text-to-audio/raw/main/audio.mp3
-
-> **Note:** If the player above doesn't appear, you can also [click here to play/download the file](https://github.com/ppavankumar19/text-to-audio/raw/main/audio.mp3).
+<div align="center">
+  <audio controls>
+    <source src="audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <br>
+  <a href="audio.mp3" download><b>Download audio.mp3</b></a>
+</div>
 
 ## Features
 
