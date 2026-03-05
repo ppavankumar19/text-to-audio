@@ -45,12 +45,9 @@ Since modern Linux distributions protect the system Python environment, use a vi
 
 ## Audio Preview
 
-
 Listen to the generated audio directly here:
 
-https://github.com/user-attachments/assets/1f7bf92e-audio-mp3
-
-*(Note: If you don't see the player, GitHub may require the file to be converted to MP4 for in-place rendering. See the Download section below.)*
+https://github.com/ppavankumar19/text-to-audio/blob/main/audio.mp3
 
 <div align="center">
 
