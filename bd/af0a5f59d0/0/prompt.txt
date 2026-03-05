@@ -1,0 +1,5 @@
+git status
+
+---
+
+So, First of all read the GEMINI.md file which is in ~ directory, After that lets build a project using sarvaam.ai API Key, Where The main scope is converting the text file (Any language in the file the content.) need to write a python script where in that it read the story.txt file and read the content and generates a audio file using the api key which i'll paste the key later at the end, so now this is the project, Go with the best approach python script, when i run the file it gives the audio.mp3 file so, this the scope. For this project what ever dependencies are required and files are required create them. So, First Create a README.md file and then rest of the things. I Hope You will Crack It, Your a Senior Developer. So, Go.
