@@ -45,7 +45,6 @@ Since modern Linux distributions protect the system Python environment, use a vi
 
 ## Audio Preview
 
-[Play Audio](https://github.com/ppavankumar19/text-to-audio/blob/main/audio.mp3)
 
 Listen to the generated audio directly here:
 
