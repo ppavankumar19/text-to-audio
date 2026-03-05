@@ -37,6 +37,7 @@ This project converts text from a `story.txt` file into an audio file (`audio.mp
 ## Audio Preview
 
 *(To activate the inline player: Edit this README on GitHub and drag & drop your `audio.mp3` file here!)*
+[audio.mp3](https://github.com/user-attachments/files/25763237/audio.mp3)
 
 ## Features
 
