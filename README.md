@@ -36,11 +36,18 @@ This project converts text from a `story.txt` file into an audio file (`audio.mp
 
 ## Audio Preview
 
-*(To activate the inline player: Edit this README on GitHub and drag & drop your `audio.mp3` file here!)*
-[audio.mp3](https://github.com/user-attachments/files/25763237/audio.mp3)
+Click the button below to listen to the audio on the live player:
+
+<div align="center">
+
+[![Live Audio Player](https://img.shields.io/badge/LIVE_PLAYER-Click_to_Listen-brightgreen?style=for-the-badge&logo=google-play&logoColor=white)](https://ppavankumar19.github.io/text-to-audio/)
+
+*(Hosted via GitHub Pages)*
+
+</div>
 
 ## Features
 
 - Supports Indian English (`en-IN`), Telugu (`te-IN`), and other Indian languages.
 - **Smart Chunking:** Automatically splits long text files to stay within API limits.
-- **Native Experience:** Uses GitHub's secure, built-in player for the best audio quality.
+- **Web Player:** Includes a dedicated web player for easy sharing and listening.
