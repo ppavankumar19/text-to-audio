@@ -1,16 +1,36 @@
 import os
 import base64
 import requests
-import json
+import argparse
 from dotenv import load_dotenv
+from langdetect import detect
 
-# Set your target language here (e.g., 'te-IN' for Telugu, 'hi-IN' for Hindi, 'en-IN' for English)
-TARGET_LANGUAGE = "te-IN"
-SPEAKER = "shubh"
-MODEL = "bulbul:v3"
+# Configuration
 MAX_CHARS_PER_CHUNK = 2000
 
-def get_audio_from_api(text, language_code):
+# Language Mapping (Auto-detect → Sarvam Code)
+LANG_MAP = {
+    'te': 'te-IN', # Telugu
+    'hi': 'hi-IN', # Hindi
+    'en': 'en-IN', # English
+    'kn': 'kn-IN', # Kannada
+    'ml': 'ml-IN', # Malayalam
+    'ta': 'ta-IN', # Tamil
+    'mr': 'mr-IN', # Marathi
+    'bn': 'bn-IN', # Bengali
+}
+
+def detect_language(text):
+    """
+    Automatically detects the language of the input text.
+    """
+    try:
+        lang_code = detect(text)
+        return LANG_MAP.get(lang_code, 'en-IN') # Default to en-IN if not found
+    except Exception:
+        return 'en-IN'
+
+def get_audio_from_api(text, language_code, speaker="shubh"):
     """
     Calls Sarvam.ai's TTS API for a single chunk of text.
     """
@@ -23,8 +43,8 @@ def get_audio_from_api(text, language_code):
     payload = {
         "text": text,
         "target_language_code": language_code,
-        "speaker": SPEAKER,
-        "model": MODEL
+        "speaker": speaker,
+        "model": "bulbul:v3"
     }
     headers = {
         "api-subscription-key": api_key,
@@ -57,15 +77,20 @@ def chunk_text(text, max_len=MAX_CHARS_PER_CHUNK):
         chunks.append(text)
     return chunks
 
-def convert_text_to_audio(story_file="story.txt", output_file="audio.mp3"):
+def main():
+    parser = argparse.ArgumentParser(description="Sarvam AI Text-to-Audio Converter")
+    parser.add_argument("--speaker", default="shubh", help="Select speaker: shubh, ritu, priya, etc.")
+    parser.add_argument("--file", default="story.txt", help="Path to your story file.")
+    args = parser.parse_args()
+
     load_dotenv()
     
-    if not os.path.exists(story_file):
-        print(f"Error: {story_file} not found.")
+    if not os.path.exists(args.file):
+        print(f"Error: {args.file} not found.")
         return
 
     try:
-        with open(story_file, "r", encoding="utf-8") as f:
+        with open(args.file, "r", encoding="utf-8") as f:
             text = f.read().strip()
     except Exception as e:
         print(f"Failed to read file: {e}")
@@ -75,15 +100,18 @@ def convert_text_to_audio(story_file="story.txt", output_file="audio.mp3"):
         print("Error: Input file is empty.")
         return
 
+    # Auto-detect language
+    target_lang = detect_language(text)
+    print(f"Detected language: {target_lang}")
+    print(f"Using speaker: {args.speaker}")
+
     chunks = chunk_text(text)
-    print(f"Processing {len(chunks)} chunk(s) for language: {TARGET_LANGUAGE}...")
+    print(f"Processing {len(chunks)} chunk(s)...")
 
     all_audio_data = []
     for i, chunk in enumerate(chunks):
-        if len(chunks) > 1:
-            print(f"Converting chunk {i+1}/{len(chunks)}...")
-        
-        audio_data = get_audio_from_api(chunk, TARGET_LANGUAGE)
+        print(f"Converting chunk {i+1}/{len(chunks)}...")
+        audio_data = get_audio_from_api(chunk, target_lang, args.speaker)
         if audio_data:
             all_audio_data.append(audio_data)
         else:
@@ -91,6 +119,7 @@ def convert_text_to_audio(story_file="story.txt", output_file="audio.mp3"):
             return
 
     # Combine all chunks into one file
+    output_file = "audio.mp3"
     with open(output_file, "wb") as f:
         for chunk_data in all_audio_data:
             f.write(chunk_data)
@@ -98,4 +127,4 @@ def convert_text_to_audio(story_file="story.txt", output_file="audio.mp3"):
     print(f"Success! Combined audio saved as: {output_file}")
 
 if __name__ == "__main__":
-    convert_text_to_audio()
+    main()
